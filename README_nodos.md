@@ -82,3 +82,7 @@ rqt_graph
 ---
 
 ## Arquitectura
+
+- **nodo1, nodo2, nodo3**: Publican valores aleatorios (0.0 - 10.0)
+- **nodo4**: Recibe los 3 valores, calcula sumatoria y promedio, publica a nodo5
+- **nodo5**: Recibe el promedio final
