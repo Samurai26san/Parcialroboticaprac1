@@ -1,18 +1,17 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray
+from sensor_msgs_custom.msg import FilteredSensor
 
 class sensor3sub(Node):
 
     def __init__(self):
         super().__init__('sensor_subscriber')
-
-        # Guardamos los últimos datos de cada nodo
         self.data1 = None
         self.data2 = None
         self.data3 = None
 
-        self.publisher_nodo5 = self.create_publisher(Float32MultiArray, 'sensor_5', 10)
+        self.publisher_nodo5 = self.create_publisher(FilteredSensor, 'filtered_sensor', 10)
 
         self.subscription1 = self.create_subscription(
             Float32MultiArray, 'sensor_1', self.listener_callback_1, 10)
@@ -37,7 +36,6 @@ class sensor3sub(Node):
         self.sumatoria_prom()
 
     def sumatoria_prom(self):
-        # Solo calcula si ya llegaron datos de los 3 nodos
         if self.data1 is None or self.data2 is None or self.data3 is None:
             return
 
@@ -46,9 +44,9 @@ class sensor3sub(Node):
         self.get_logger().info('La sumatoria es: "%s"' % sumatoria)
         self.get_logger().info('El promedio es: "%s"' % promedio)
 
-        # Publicar promedio a nodo 5
-        msg_out = Float32MultiArray()
-        msg_out.data = [promedio]
+        msg_out = FilteredSensor()
+        msg_out.sensor_value = promedio
+        msg_out.name = 'promedio_sensores'
         self.publisher_nodo5.publish(msg_out)
 
 def main(args=None):
