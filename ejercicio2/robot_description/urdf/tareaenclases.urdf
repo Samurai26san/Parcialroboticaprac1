@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<robot name="humanoid_planar_arm">
+
+  <!-- DUMMY ROOT obligatorio -->
+  <link name="base_link"/>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="link0_passive"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="link0_passive">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><cylinder length="0.5" radius="0.3"/></geometry>
+      <material name="blue"><color rgba="0 0 0.8 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><cylinder length="0.5" radius="0.3"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0"
+               iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <joint name="q1" type="revolute">
+    <origin xyz="0 0 0.25" rpy="0 0 0"/>
+    <parent link="link0_passive"/>
+    <child link="link1"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0.0" upper="3.1416" effort="50" velocity="1.5"/>
+    <dynamics damping="0.1" friction="0.0"/>
+  </joint>
+
+  <link name="link1">
+    <visual>
+      <origin xyz="0.5 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder length="1.0" radius="0.08"/></geometry>
+      <material name="red"><color rgba="0.8 0 0 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.5 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder length="1.0" radius="0.08"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.3"/>
+      <origin xyz="0.5 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0"
+               iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <joint name="q2" type="revolute">
+    <origin xyz="1.0 0 0" rpy="0 0 0"/>
+    <parent link="link1"/>
+    <child link="link2"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0.0" upper="2.618" effort="40" velocity="2.0"/>
+    <dynamics damping="0.1" friction="0.0"/>
+  </joint>
+
+  <link name="link2">
+    <visual>
+      <origin xyz="0.3 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder length="0.6" radius="0.08"/></geometry>
+      <material name="blue"><color rgba="0 0 0.8 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.3 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder length="0.6" radius="0.08"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <origin xyz="0.3 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0"
+               iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <joint name="q3" type="revolute">
+    <origin xyz="0.6 0 0" rpy="0 0 0"/>
+    <parent link="link2"/>
+    <child link="link3"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.2217" upper="1.2217" effort="20" velocity="3.0"/>
+    <dynamics damping="0.1" friction="0.0"/>
+  </joint>
+
+  <link name="link3">
+    <visual>
+      <origin xyz="0.2 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder length="0.4" radius="0.07"/></geometry>
+      <material name="red"><color rgba="0.8 0 0 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.2 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder length="0.4" radius="0.07"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0.2 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0"
+               iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <joint name="q4" type="revolute">
+    <origin xyz="0.4 0 0" rpy="0 0 0"/>
+    <parent link="link3"/>
+    <child link="link4"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0.0" upper="1.5708" effort="10" velocity="3.0"/>
+    <dynamics damping="0.1" friction="0.0"/>
+  </joint>
+
+  <link name="link4">
+    <visual>
+      <origin xyz="0.15 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder length="0.3" radius="0.06"/></geometry>
+      <material name="blue"><color rgba="0 0 0.8 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.15 0 0" rpy="0 1.5708 0"/>
+      <geometry><cylinder length="0.3" radius="0.06"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.05"/>
+      <origin xyz="0.15 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0"
+               iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+
+</robot>
