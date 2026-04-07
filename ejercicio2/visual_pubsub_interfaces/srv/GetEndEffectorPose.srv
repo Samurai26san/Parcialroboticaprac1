@@ -1,0 +1,11 @@
+float64 q1
+float64 q2
+float64 q3
+float64 q4
+---
+float64 x
+float64 y
+float64 z
+# Norma del error respecto al último target (0.0 si no hay target activo)
+float64 error_norm
+string status
