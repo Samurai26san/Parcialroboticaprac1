@@ -1,0 +1,55 @@
+<robot name="Examenp1">
+
+    <link name="link0_passive">
+        <visual>
+            <geometry><cylinder length="0.1" radius="0.2"/></geometry>
+            <material name="blue"><color rgba="0 0 0.8 1"/></material>
+        </visual>
+    </link>
+
+    <joint name="q1" type="revolute">
+        <origin xyz="0 0 0.05" rpy="0 0 0"/> <parent link="link0_passive"/>
+        <child link="link1"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-3.1416" upper="3.1416" effort="10" velocity="1"/>
+    </joint>
+
+    <link name="link1">
+        <visual>
+            <origin xyz="0 0 1.5" rpy="0 0 0"/> 
+            <geometry><cylinder length="3.0" radius="0.05"/></geometry>
+            <material name="red"><color rgba="0.8 0 0 1"/></material>
+        </visual>
+    </link>
+
+    <joint name="q2" type="revolute">
+        <origin xyz="0 0 3.0" rpy="1.571 0 0"/> <parent link="link1"/>
+        <child link="link2"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-1.571" upper="1.571" effort="10" velocity="1"/>
+    </joint>
+
+    <link name="link2">
+        <visual>
+            <origin xyz="0 0.75 0" rpy="1.571 0 0"/>
+            <geometry><cylinder length="1.5" radius="0.05"/></geometry>
+            <material name="blue"/>
+        </visual>
+    </link>
+
+    <joint name="q3" type="revolute">
+        <origin xyz="0 1.5 0" rpy="0 0 0"/> <parent link="link2"/>
+        <child link="link3"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-3.1416" upper="3.1416" effort="10" velocity="1"/>
+    </joint>
+
+    <link name="link3">
+        <visual>
+            <origin xyz="0 0.75 0" rpy="1.571 0 0"/>
+            <geometry><cylinder length="1.5" radius="0.05"/></geometry>
+            <material name="red"/>
+        </visual>
+    </link>
+
+</robot>
