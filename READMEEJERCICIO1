@@ -3,7 +3,8 @@ cd ~/Robotica/visual_ws/src
 cat <<EOF > README.md
 # Control de Brazo Robótico TRR - Cinemática Inversa
 
-Este repositorio contiene la implementación de un algoritmo de cinemática inversa para un manipulador de tres grados de libertad (TRR). El sistema utiliza el método del Jacobiano Amortiguado para garantizar la estabilidad en la vecindad de las singularidades.
+Este repositorio contiene la implementación de un algoritmo de cinemática inversa para un manipulador de tres grados de libertad (TRR).
+El sistema utiliza el método del Jacobiano Amortiguado para garantizar la estabilidad en la vecindad de las singularidades.
 
 ## Estructura del repositorio
 * **ejercicio1/robot_description**: Contiene el archivo URDF (Examenp1.urdf), la configuración de RViz y el script de lanzamiento maestro.
@@ -30,9 +31,6 @@ ros2 topic pub /target_position geometry_msgs/msg/Point "{x: 1.5, y: 1.0, z: 4.5
 EOF
 
 -------------------------------------------------------------------------------------------------------------------------------------
-
-Una vez creado el archivo, usa estos comandos para actualizar tu repositorio remoto:
-
 Bash
 # 1. Agregar el archivo al índice de Git
 git add README.md
